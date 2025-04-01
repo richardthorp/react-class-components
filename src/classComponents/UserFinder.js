@@ -1,18 +1,14 @@
 import { Component } from 'react';
+import {UsersContext} from '../store/users-content';
 import Users from './Users';
 import classes from '../styles/UserFinder.module.css';
 
-const DUMMY_USERS = [
-  { id: 'u1', name: 'Max' },
-  { id: 'u2', name: 'Manuel' },
-  { id: 'u3', name: 'Julie' },
-];
 
 class UserFinder extends Component {
+  static contextType = UsersContext;
   constructor() {
     super();
     this.state = {
-      users: [],
       filteredUsers: [],
       searchTerm: ''
     }
@@ -25,8 +21,7 @@ class UserFinder extends Component {
   componentDidMount() {
     // Doing this only as an example of how componentDidMount could be used if data had to be fetched.
     this.setState({
-      users: DUMMY_USERS,
-      filteredUsers: DUMMY_USERS
+      filteredUsers: this.context.users
     });
   }
 
@@ -41,7 +36,7 @@ class UserFinder extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevState.searchTerm !== this.state.searchTerm) {
       this.setState({
-        filteredUsers: this.state.users.filter((user) => {
+        filteredUsers: this.context.users.filter((user) => {
           return user.name.includes(this.state.searchTerm)
         })
       })

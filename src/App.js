@@ -1,12 +1,18 @@
-// import Users from './components/Users';
-// import UserFinder from "./classComponents/Users";
+// import UsersContext from "./store/users-content";
+// import UsersContextProvider from "./store/users-content";
 import UserFinder from "./classComponents/UserFinder";
+
+// const users = [
+//   { id: 'u1', name: 'Max' },
+//   { id: 'u2', name: 'Manuel' },
+//   { id: 'u3', name: 'Julie' }
+// ];
 
 function App() {
   return (
-    <div>
+    // <UsersContextProvider>
       <UserFinder />
-    </div>
+    // </UsersContextProvider>
   );
 }
 
